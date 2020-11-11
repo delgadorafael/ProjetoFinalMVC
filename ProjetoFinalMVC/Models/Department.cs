@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+
 namespace ProjetoFinalMVC.Models
 {
     public class Department
