@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,12 +9,13 @@ namespace ProjetoFinalMVC.Models
 {
     public class Seller
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public DateTime BirthDate { get; set; }
         public double BaseSalary { get; set; }
-
         public Department Deparment { get; set; }
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 

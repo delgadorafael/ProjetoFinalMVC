@@ -2,13 +2,17 @@
 using System.ComponentModel;
 using System.Collections.Generic;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjetoFinalMVC.Models
 {
     public class Department
     {
         [DisplayName("ID")]
-        public int ID { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Id { get; set; }
         public string Name { get; set; }
         public ICollection<Seller> Sellers { get; set; } = new List<Seller>();
 
@@ -16,9 +20,9 @@ namespace ProjetoFinalMVC.Models
         {
         }
 
-        public Department(int iD, string name)
+        public Department(int id, string name)
         {
-            ID = iD;
+            Id = id;
             Name = name;
         }
 

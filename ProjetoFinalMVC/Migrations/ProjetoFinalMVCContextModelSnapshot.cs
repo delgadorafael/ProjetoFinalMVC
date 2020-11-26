@@ -21,22 +21,18 @@ namespace ProjetoFinalMVC.Migrations
 
             modelBuilder.Entity("ProjetoFinalMVC.Models.Department", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("Id");
 
                     b.Property<string>("Name");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Department");
                 });
 
             modelBuilder.Entity("ProjetoFinalMVC.Models.SalesRecord", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("Id");
 
                     b.Property<double>("Amount");
 
@@ -55,15 +51,13 @@ namespace ProjetoFinalMVC.Migrations
 
             modelBuilder.Entity("ProjetoFinalMVC.Models.Seller", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("Id");
 
                     b.Property<double>("BaseSalary");
 
                     b.Property<DateTime>("BirthDate");
 
-                    b.Property<int?>("DeparmentID");
+                    b.Property<int?>("DeparmentId");
 
                     b.Property<string>("Email");
 
@@ -71,7 +65,7 @@ namespace ProjetoFinalMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DeparmentID");
+                    b.HasIndex("DeparmentId");
 
                     b.ToTable("Seller");
                 });
@@ -87,7 +81,7 @@ namespace ProjetoFinalMVC.Migrations
                 {
                     b.HasOne("ProjetoFinalMVC.Models.Department", "Deparment")
                         .WithMany("Sellers")
-                        .HasForeignKey("DeparmentID");
+                        .HasForeignKey("DeparmentId");
                 });
 #pragma warning restore 612, 618
         }
