@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ProjetoFinalMVC.Data;
+using ProjetoFinalMVC.Services;
 
 namespace ProjetoFinalMVC
 {
@@ -40,6 +41,8 @@ namespace ProjetoFinalMVC
                     options.UseSqlServer(Configuration.GetConnectionString("ProjetoFinalMVCContext")));
 
             services.AddScoped<SeedingService>();
+            services.AddScoped<SellerService>();
+            services.AddScoped<DepartmentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
