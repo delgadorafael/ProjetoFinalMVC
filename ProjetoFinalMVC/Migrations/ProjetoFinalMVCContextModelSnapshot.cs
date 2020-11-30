@@ -21,7 +21,9 @@ namespace ProjetoFinalMVC.Migrations
 
             modelBuilder.Entity("ProjetoFinalMVC.Models.Department", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name");
 
@@ -32,7 +34,9 @@ namespace ProjetoFinalMVC.Migrations
 
             modelBuilder.Entity("ProjetoFinalMVC.Models.SalesRecord", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<double>("Amount");
 
@@ -51,7 +55,9 @@ namespace ProjetoFinalMVC.Migrations
 
             modelBuilder.Entity("ProjetoFinalMVC.Models.Seller", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<double>("BaseSalary");
 

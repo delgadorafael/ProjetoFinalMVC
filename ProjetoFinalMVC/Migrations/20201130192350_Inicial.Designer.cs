@@ -10,7 +10,7 @@ using ProjetoFinalMVC.Data;
 namespace ProjetoFinalMVC.Migrations
 {
     [DbContext(typeof(ProjetoFinalMVCContext))]
-    [Migration("20201126164815_Inicial")]
+    [Migration("20201130192350_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,7 +23,9 @@ namespace ProjetoFinalMVC.Migrations
 
             modelBuilder.Entity("ProjetoFinalMVC.Models.Department", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name");
 
@@ -34,7 +36,9 @@ namespace ProjetoFinalMVC.Migrations
 
             modelBuilder.Entity("ProjetoFinalMVC.Models.SalesRecord", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<double>("Amount");
 
@@ -53,13 +57,15 @@ namespace ProjetoFinalMVC.Migrations
 
             modelBuilder.Entity("ProjetoFinalMVC.Models.Seller", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<double>("BaseSalary");
 
                     b.Property<DateTime>("BirthDate");
 
-                    b.Property<int?>("DeparmentId");
+                    b.Property<int>("DepartmentId");
 
                     b.Property<string>("Email");
 
@@ -67,7 +73,7 @@ namespace ProjetoFinalMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DeparmentId");
+                    b.HasIndex("DepartmentId");
 
                     b.ToTable("Seller");
                 });
@@ -83,7 +89,8 @@ namespace ProjetoFinalMVC.Migrations
                 {
                     b.HasOne("ProjetoFinalMVC.Models.Department", "Deparment")
                         .WithMany("Sellers")
-                        .HasForeignKey("DeparmentId");
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

@@ -9,9 +9,9 @@ namespace ProjetoFinalMVC.Models
 {
     public class Department
     {
-        [DisplayName("ID")]
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //[DisplayName("ID")]
+        //[Key]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         public string Name { get; set; }
         public ICollection<Seller> Sellers { get; set; } = new List<Seller>();
@@ -23,6 +23,11 @@ namespace ProjetoFinalMVC.Models
         public Department(int id, string name)
         {
             Id = id;
+            Name = name;
+        }
+
+        public Department(string name)
+        {
             Name = name;
         }
 

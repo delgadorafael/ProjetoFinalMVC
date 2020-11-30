@@ -9,8 +9,8 @@ namespace ProjetoFinalMVC.Models
 {
     public class Seller
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //[Key]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
@@ -27,6 +27,15 @@ namespace ProjetoFinalMVC.Models
         public Seller(int id, string name, string email, DateTime birthDate, double baseSalary, Department deparment)
         {
             Id = id;
+            Name = name;
+            Email = email;
+            BirthDate = birthDate;
+            BaseSalary = baseSalary;
+            Deparment = deparment;
+        }
+
+        public Seller(string name, string email, DateTime birthDate, double baseSalary, Department deparment)
+        {
             Name = name;
             Email = email;
             BirthDate = birthDate;

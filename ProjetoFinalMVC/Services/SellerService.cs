@@ -21,10 +21,24 @@ namespace ProjetoFinalMVC.Services
             return _context.Seller.ToList();
         }
 
+        public Seller FindById(int id)
+        {
+            return _context.Seller.Find(id);
+            //return _context.Seller.FirstOrDefault(x => x.Id == id);
+        }
+
         public void Insert(Seller obj)
         {
             //obj.Deparment = _context.Department.First();
             _context.Add(obj);
+            _context.SaveChanges();
+        }
+
+        public void Remove(int id)
+        {
+            var obj = _context.Seller.Find(id);
+            _context.Seller.Remove(obj);
+            //_context.Seller.Remove(seller); caso parametro fosse o objeto vendedor
             _context.SaveChanges();
         }
     }
