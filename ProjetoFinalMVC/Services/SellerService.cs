@@ -38,10 +38,17 @@ namespace ProjetoFinalMVC.Services
 
         public async Task RemoveAsync(int id)
         {
-            var obj = await _context.Seller.FindAsync(id);
-            _context.Seller.Remove(obj);
-            //_context.Seller.Remove(seller); caso parametro fosse o objeto vendedor
-            await _context.SaveChangesAsync();
+            try
+            {
+                var obj = await _context.Seller.FindAsync(id);
+                _context.Seller.Remove(obj);
+                //_context.Seller.Remove(seller); caso parametro fosse o objeto vendedor
+                await _context.SaveChangesAsync();
+            }
+            catch(DbUpdateException e)
+            {
+                throw new IntegrityException("Cannot delete Seller because it has sales");
+            }
         }
 
         public async Task UpdateAsync(Seller obj)
